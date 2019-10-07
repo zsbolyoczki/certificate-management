@@ -23,7 +23,8 @@ openssl req -x509 -config .CA.cnf -newkey rsa:4096 -sha512 -nodes -out MYCOMPANY
 ## Generate the server certificate request and sign the CSR with the root CA
 ```
 openssl req -config .host.cnf -newkey rsa:4096 -sha512 -nodes -out MYCOMPANY-hostcert.csr -outform PEM
-openssl ca -config .CA.cnf -policy signing_policy -extensions signing_req -out MYCOMPANY-hostcert.pem -infiles MYCOMPANY-hostcert.csr
+openssl ca -config .CA.cnf -policy signing_policy -extensions signing_req -out MYCOMPANY-hostcert.pem \ 
+  -infiles MYCOMPANY-hostcert.csr
 ```
 
 The CSR and the certificate can be verified with the following command:
