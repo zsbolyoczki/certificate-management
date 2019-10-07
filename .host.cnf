@@ -1,0 +1,42 @@
+#
+# used for requesting certificate for hosts
+#
+
+HOME            = .
+RANDFILE        = $ENV::HOME/.rnd
+
+####################################################################
+[ req ]
+default_bits       = 4096
+default_keyfile    = MYCOMPANY-hostkey.pem
+distinguished_name = server_distinguished_name
+req_extensions     = server_req_extensions
+string_mask        = utf8only
+prompt = no
+
+####################################################################
+[ server_distinguished_name ]
+countryName = XX
+stateOrProvinceName = XXX
+localityName = XXX
+OU = XXX
+organizationName = XXX
+commonName = XXX
+
+####################################################################
+[ server_req_extensions ]
+
+subjectKeyIdentifier = hash
+basicConstraints     = CA:FALSE
+keyUsage             = digitalSignature, keyEncipherment
+subjectAltName       = @alternate_names
+nsComment            = "MYCOMPANY Generated Certificate"
+
+####################################################################
+[ alternate_names ]
+DNS.0 =  hostname1
+DNS.1 =  hostname2
+[...]
+DNS.N =  hostnameN
+
+
